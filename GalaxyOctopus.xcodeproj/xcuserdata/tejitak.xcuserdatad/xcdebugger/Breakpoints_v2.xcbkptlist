@@ -2,4 +2,66 @@
 <Bucket
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GalaxyOctopus/Scene/GameScene.swift"
+            timestampString = "450532676.224198"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "GameScene"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GalaxyOctopus.GameScene.init (GalaxyOctopus.GameScene.Type)(size : C.CGSize) -&gt; GalaxyOctopus.GameScene"
+                  moduleName = "GalaxyOctopus"
+                  urlString = "file:///Users/tejitak/dev/swift/GalaxyOctopus/GalaxyOctopus/Scene/GameScene.swift"
+                  timestampString = "450533359.546055"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "132">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GalaxyOctopus.GameScene.init (GalaxyOctopus.GameScene.Type)() -&gt; GalaxyOctopus.GameScene"
+                  moduleName = "GalaxyOctopus"
+                  urlString = "file:///Users/tejitak/dev/swift/GalaxyOctopus/GalaxyOctopus/Scene/GameScene.swift"
+                  timestampString = "450533359.546368"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "109">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GalaxyOctopus.GameScene.init (GalaxyOctopus.GameScene.Type)(coder : ObjectiveC.NSCoder) -&gt; Swift.Optional&lt;GalaxyOctopus.GameScene&gt;"
+                  moduleName = "GalaxyOctopus"
+                  urlString = "file:///Users/tejitak/dev/swift/GalaxyOctopus/GalaxyOctopus/Scene/GameScene.swift"
+                  timestampString = "450533359.546965"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "120">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

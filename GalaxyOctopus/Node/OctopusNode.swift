@@ -14,9 +14,9 @@ class OctopusNode: SKSpriteNode {
         case speed = 1000.0
     }
     
-    override init() {
-        let texture = SKTexture(imageNamed: "octopus.png")
-        super.init(texture: texture, color: nil, size: CGSize(width: texture.size().width/3, height: texture.size().height/3))
+    override init(texture: SKTexture!, color: UIColor!, size: CGSize) {
+        var texture = SKTexture(imageNamed: "octopus.png")
+        super.init(texture: texture, color: color, size: size)
     }
     
     required init(coder aDecoder: NSCoder) {

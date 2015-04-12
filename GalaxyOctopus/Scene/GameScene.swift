@@ -38,7 +38,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // init states
     var score: Int = 0
     var gameStatus: Int = GameStatus.kGamePlaying.rawValue
-    let player: OctopusNode = OctopusNode()
+    var player: OctopusNode?
     var playerSpeed: CGFloat = OctopusNode.NodeSettings.speed.rawValue
     
     // collision category
@@ -72,7 +72,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.contactDelegate = self
         
         // initialize player
+        self.player = OctopusNode(texture: nil, color: nil, size: CGSize(width: self.frame.size.width / 8, height: self.frame.size.height / 16))
         addPlayer()
+        
+        let swipeRight:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: Selector("swipedRight:"))
+        swipeRight.direction = .Right
+        view.addGestureRecognizer(swipeRight)
+        
+        let swipeLeft:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: Selector("swipedLeft:"))
+        swipeLeft.direction = .Left
+        view.addGestureRecognizer(swipeLeft)
+        
+        let swipeUp:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: Selector("swipedUp:"))
+        swipeUp.direction = .Up
+        view.addGestureRecognizer(swipeUp)
+        
+        let swipeDown:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: Selector("swipedDown:"))
+        swipeDown.direction = .Down
+        view.addGestureRecognizer(swipeDown)
         
         levelLabel.text = "LEVEL:\(level)"
         levelLabel.fontSize = 40
@@ -85,11 +102,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let touch: AnyObject! = touches.anyObject()
         let location = touch.locationInNode(self)
         
-        var y: CGFloat = location.y
-        var diff: CGFloat = abs(y - self.player.position.y)
-        var move: SKAction = SKAction.moveToY(y, duration: NSTimeInterval(diff / OctopusNode.NodeSettings.speed.rawValue))
-        self.player.runAction(move)
-        
+        if let p = self.player {
+            var y: CGFloat = location.y
+            var diff: CGFloat = abs(y - p.position.y)
+            var move: SKAction = SKAction.moveToY(y, duration: NSTimeInterval(diff / OctopusNode.NodeSettings.speed.rawValue))
+            p.runAction(move)
+        }
     }
     
     func didBeginContact(contact: SKPhysicsContact) {
@@ -131,15 +149,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func addPlayer() {
-        self.player.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
-        self.player.name = ObjectName.player.toString()
-        self.player.physicsBody?.categoryBitMask = playerCategory
-        self.player.physicsBody?.contactTestBitMask = meteorCategory
-        var pr: CGFloat = self.player.size.width / 4
-        self.player.physicsBody = SKPhysicsBody(
-            circleOfRadius: pr
-        )
-        self.addChild(player)
+        if let p = self.player {
+            p.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+            p.name = ObjectName.player.toString()
+            p.physicsBody?.categoryBitMask = playerCategory
+            p.physicsBody?.contactTestBitMask = meteorCategory
+            var pr: CGFloat = p.size.width / 4
+            p.physicsBody = SKPhysicsBody(
+                circleOfRadius: pr
+            )
+            self.addChild(p)
+        }
     }
     
     
@@ -182,4 +202,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func swipedRight(sender:UISwipeGestureRecognizer){
+        println("swiped right")
+    }
+    
+    func swipedLeft(sender:UISwipeGestureRecognizer){
+        println("swiped left")
+    }
+    
+    func swipedUp(sender:UISwipeGestureRecognizer){
+        println("swiped up")
+    }
+    
+    func swipedDown(sender:UISwipeGestureRecognizer){
+        println("swiped down")
+    }
 }

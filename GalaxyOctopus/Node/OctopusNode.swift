@@ -11,7 +11,7 @@ import SpriteKit
 class OctopusNode: SKSpriteNode {
     
     enum NodeSettings: CGFloat {
-        case speed = 1000.0
+        case speed = 500.0
     }
     
     override init(texture: SKTexture!, color: UIColor!, size: CGSize) {

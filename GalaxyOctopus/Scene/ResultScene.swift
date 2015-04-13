@@ -38,12 +38,12 @@ class ResultScene: SKScene {
         self.addChild(hiLabel)
         
         // back button
-        let backLabel = SKLabelNode(fontNamed: "Copperplate")
-        backLabel.text = "Back"
-        backLabel.fontSize = 36
-        backLabel.position = CGPoint(x: CGRectGetMidX(self.frame), y: 200)
-        backLabel.name = "Back"
-        self.addChild(backLabel)
+//        let backLabel = SKLabelNode(fontNamed: "Copperplate")
+//        backLabel.text = "Back"
+//        backLabel.fontSize = 36
+//        backLabel.position = CGPoint(x: CGRectGetMidX(self.frame), y: 200)
+//        backLabel.name = "Back"
+//        self.addChild(backLabel)
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
@@ -52,14 +52,14 @@ class ResultScene: SKScene {
         let location = touch.locationInNode(self)
         let touchedNode = self.nodeAtPoint(location)
         
-        if touchedNode.name != nil {
-            if touchedNode.name == "Back" {
-                
+//        if touchedNode.name != nil {
+//            if touchedNode.name == "Back" {
+        
                 let newScene = TitleScene(size: self.scene!.size)
                 newScene.scaleMode = SKSceneScaleMode.AspectFill
                 self.view!.presentScene(newScene)
-            }
-        }
+//            }
+//        }
     }
     
     override func update(currentTime: CFTimeInterval) {

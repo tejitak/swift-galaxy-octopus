@@ -27,7 +27,7 @@ class MeteorNode: SKSpriteNode {
     
     override init() {
         let texture = SKTexture(imageNamed: MeteorName.Normal.toString())
-        super.init(texture: texture, color: nil, size: CGSize(width: texture.size().width, height: texture.size().height))
+        super.init(texture: texture, color: nil, size: CGSize(width: texture.size().width / 4, height: texture.size().height / 4))
     }
     
     required init(coder aDecoder: NSCoder) {

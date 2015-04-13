@@ -20,12 +20,12 @@ class TitleScene: SKScene {
         self.addChild(myLabel)
         
         // show start label
-        let startLabel = SKLabelNode(fontNamed: "Copperplate")
-        startLabel.text = "Start!"
-        startLabel.fontSize = 36
-        startLabel.position = CGPoint(x: CGRectGetMidX(self.frame), y: 200)
-        startLabel.name = "Start"
-        self.addChild(startLabel)
+//        let startLabel = SKLabelNode(fontNamed: "Copperplate")
+//        startLabel.text = "Start!"
+//        startLabel.fontSize = 36
+//        startLabel.position = CGPoint(x: CGRectGetMidX(self.frame), y: 200)
+//        startLabel.name = "Start"
+//        self.addChild(startLabel)
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
@@ -35,13 +35,13 @@ class TitleScene: SKScene {
         let touchedNode = self.nodeAtPoint(location)
         
         // move to GameScene by tapping start label
-        if touchedNode.name != nil {
-            if touchedNode.name == "Start" {
+//        if touchedNode.name != nil {
+//            if touchedNode.name == "Start" {
                 let newScene = GameScene(size: self.scene!.size)
                 newScene.scaleMode = SKSceneScaleMode.AspectFill
                 self.view!.presentScene(newScene)
-            }
-        }
+//            }
+//        }
     }
     
     override func update(currentTime: CFTimeInterval) {

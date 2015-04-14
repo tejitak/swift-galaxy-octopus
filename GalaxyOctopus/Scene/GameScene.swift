@@ -188,20 +188,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             var move: SKAction
             if direction == Direction.right.rawValue {
                 rotate = SKAction.rotateByAngle(CGFloat(-M_PI * 2), duration: 2.0)
-                move = SKAction.moveToX(moveX, duration: 1.0)
+                move = SKAction.moveToX(moveX, duration: 2.0)
                 meteor.position = CGPointMake(-meteor.size.width, pos)
             } else if direction == Direction.left.rawValue {
                 rotate = SKAction.rotateByAngle(CGFloat(M_PI * 2), duration: 2.0)
-                move = SKAction.moveToX(moveX * -1 + self.size.width, duration: 1.0)
+                move = SKAction.moveToX(moveX * -1 + self.size.width, duration: 2.0)
                 meteor.position = CGPointMake(self.size.width + meteor.size.width, pos)
             } else if direction == Direction.up.rawValue {
                 rotate = SKAction.rotateByAngle(CGFloat(-M_PI * 2), duration: 2.0)
-                move = SKAction.moveToY(moveY, duration: 1.0)
+                move = SKAction.moveToY(moveY, duration: 2.0)
                 meteor.position = CGPointMake(pos, -meteor.size.height)
             } else {
                 // Direction.down.rawValue
                 rotate = SKAction.rotateByAngle(CGFloat(M_PI * 2), duration: 2.0)
-                move = SKAction.moveToY(moveY * -1 + self.size.height, duration: 1.0)
+                move = SKAction.moveToY(moveY * -1 + self.size.height, duration: 2.0)
                 meteor.position = CGPointMake(pos, self.size.height + meteor.size.height)
             }
             let count = SKAction.runBlock { self.countUp() }

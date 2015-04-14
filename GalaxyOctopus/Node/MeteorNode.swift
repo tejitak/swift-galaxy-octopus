@@ -46,13 +46,13 @@ class MeteorNode: SKSpriteNode {
         func getSpeed() -> CGFloat {
             switch self.rawValue {
             case 0:
-                return 0.1
+                return 0.2
             case 1:
-                return 0.2
-            case 2:
                 return 0.4
+            case 2:
+                return 0.8
             default:
-                return 0.2
+                return 0.4
             }
         }
     }

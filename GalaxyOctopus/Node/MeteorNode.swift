@@ -25,8 +25,8 @@ class MeteorNode: SKSpriteNode {
         case speed = 0.2
     }
     
-    override init() {
-        let texture = SKTexture(imageNamed: MeteorName.Normal.toString())
+    override init(texture: SKTexture!, color: UIColor!, size: CGSize) {
+        var texture = SKTexture(imageNamed: MeteorName.Normal.toString())
         super.init(texture: texture, color: nil, size: CGSize(width: texture.size().width / 4, height: texture.size().height / 4))
     }
     

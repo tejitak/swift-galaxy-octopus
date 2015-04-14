@@ -106,17 +106,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(countLabel)
     }
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-//        let touch: AnyObject! = touches.anyObject()
-//        let location = touch.locationInNode(self)
-//        if let p = self.player {
-//            var y: CGFloat = location.y
-//            var diff: CGFloat = abs(y - p.position.y)
-//            var move: SKAction = SKAction.moveToY(y, duration: NSTimeInterval(diff / OctopusNode.NodeSettings.speed.rawValue))
-//            p.runAction(move)
-//        }
-    }
-    
     func didBeginContact(contact: SKPhysicsContact) {
         // detect collision
         gameOver()

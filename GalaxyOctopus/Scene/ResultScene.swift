@@ -19,9 +19,9 @@ class ResultScene: SKScene {
         
         // show score
         let scoreLabel = SKLabelNode(fontNamed:"Copperplate")
-        scoreLabel.text = "SCORE:\(score)";
-        scoreLabel.fontSize = 72;
-        scoreLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
+        scoreLabel.text = "SCORE: \(score)"
+        scoreLabel.fontSize = 42
+        scoreLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
         self.addChild(scoreLabel)
         
         
@@ -32,34 +32,20 @@ class ResultScene: SKScene {
         
         // show high score
         let hiLabel = SKLabelNode(fontNamed:"Copperplate")
-        hiLabel.text = "ハイスコア:\(hi_score)";
-        hiLabel.fontSize = 36;
-        hiLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame)-100);
+        hiLabel.text = "HIGH SCORE: \(hi_score)"
+        hiLabel.fontSize = 24
+        hiLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame)-100)
         self.addChild(hiLabel)
-        
-        // back button
-//        let backLabel = SKLabelNode(fontNamed: "Copperplate")
-//        backLabel.text = "Back"
-//        backLabel.fontSize = 36
-//        backLabel.position = CGPoint(x: CGRectGetMidX(self.frame), y: 200)
-//        backLabel.name = "Back"
-//        self.addChild(backLabel)
     }
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        
-        let touch: AnyObject! = touches.anyObject()
-        let location = touch.locationInNode(self)
-        let touchedNode = self.nodeAtPoint(location)
-        
-//        if touchedNode.name != nil {
-//            if touchedNode.name == "Back" {
-        
-                let newScene = TitleScene(size: self.scene!.size)
-                newScene.scaleMode = SKSceneScaleMode.AspectFill
-                self.view!.presentScene(newScene)
-//            }
-//        }
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        if let touch = touches.first as? UITouch {
+            let location = touch.locationInNode(self)
+            let touchedNode = self.nodeAtPoint(location)
+            let newScene = TitleScene(size: self.scene!.size)
+            newScene.scaleMode = SKSceneScaleMode.AspectFill
+            self.view!.presentScene(newScene)
+        }
     }
     
     override func update(currentTime: CFTimeInterval) {

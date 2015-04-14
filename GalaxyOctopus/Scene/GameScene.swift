@@ -30,9 +30,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // object direction
     enum Direction: Int {
         case right = 0,
-        left,
-        up,
-        down
+        left = 1,
+        up = 2,
+        down = 3
     }
     
     // init states
@@ -60,8 +60,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var lastLevelUpTime: NSTimeInterval = 0
     
     // stage lavel
-//    var level = 0
-//    let levelLabel = SKLabelNode(fontNamed:"Copperplate")
+    var level = 0
     
     override func didMoveToView(view: SKView) {
         // setup background
@@ -96,10 +95,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         swipeDown.direction = .Down
         view.addGestureRecognizer(swipeDown)
         
-//        levelLabel.text = "LEVEL:\(level)"
-//        levelLabel.fontSize = 40
-//        levelLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:self.size.height - levelLabel.frame.height * 2)
-//        self.addChild(levelLabel)
         countLabel.text = "\(score)"
         countLabel.fontSize = 40
         countLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:self.size.height - countLabel.frame.height * 2)
@@ -120,10 +115,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         // level up interval
-//        if lastLevelUpTime + levelUpInterval * NSTimeInterval(level) < currentTime {
-//            levelUp()
-//            lastLevelUpTime = currentTime
-//        }
+        if lastLevelUpTime + levelUpInterval * NSTimeInterval(level) < currentTime {
+            levelUp()
+            lastLevelUpTime = currentTime
+        }
         
     }
     
@@ -138,11 +133,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.view!.presentScene(newScene)
     }
     
-//    func levelUp() {
-//        generateInterval *= 3/4
-//        level++
-//        levelLabel.text = "LEVEL:\(level)"
-//    }
+    func levelUp() {
+        generateInterval *= 3/4
+        level++
+    }
     
     func countUp() {
         score++
@@ -165,18 +159,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     func generateMeteor() {
+        var dir: Int = Int(arc4random_uniform(UInt32(4)))
+        var len: CGFloat = 0
+        if dir == 0 || dir == 1 {
+            len = self.size.height
+        } else {
+            len = self.size.width
+        }
         var randLine: CGFloat = CGFloat(arc4random_uniform(UInt32(meteorLine)))
-        var randDirection: Int = Int(arc4random_uniform(UInt32(2)))
-        addMeteor(self.size.height / CGFloat(meteorLine) * randLine , direction: randDirection)
+        let meteor: MeteorNode = MeteorNode()
+        addMeteor(meteor, pos: len / CGFloat(meteorLine) * randLine , direction: dir)
     }
     
-    func addMeteor(height: CGFloat, direction: Int) {
+    func addMeteor(meteor: MeteorNode, pos: CGFloat, direction: Int) {
         if gameStatus != GameStatus.kGameOver.rawValue {
-//            score++
-            
-            let meteor: MeteorNode = MeteorNode()
-            meteor.position = CGPointMake(-meteor.size.width, height)
-            meteor.speed = MeteorNode.NodeSettings.speed.rawValue
             var pr: CGFloat = meteor.size.width / 2
             meteor.physicsBody = SKPhysicsBody(
                 circleOfRadius: pr
@@ -186,19 +182,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             meteor.physicsBody?.categoryBitMask = meteorCategory
             meteor.physicsBody?.collisionBitMask = playerCategory
             
-            var moveX: CGFloat = self.size.height
+            var moveX: CGFloat = self.size.width + meteor.size.width
+            var moveY: CGFloat = self.size.height + meteor.size.height
             var rotate: SKAction
             var move: SKAction
             if direction == Direction.right.rawValue {
                 rotate = SKAction.rotateByAngle(CGFloat(-M_PI * 2), duration: 2.0)
                 move = SKAction.moveToX(moveX, duration: 1.0)
-            } else {
+                meteor.position = CGPointMake(-meteor.size.width, pos)
+            } else if direction == Direction.left.rawValue {
                 rotate = SKAction.rotateByAngle(CGFloat(M_PI * 2), duration: 2.0)
                 move = SKAction.moveToX(moveX * -1 + self.size.width, duration: 1.0)
-                meteor.position.x = self.size.width + meteor.size.width
+                meteor.position = CGPointMake(self.size.width + meteor.size.width, pos)
+            } else if direction == Direction.up.rawValue {
+                rotate = SKAction.rotateByAngle(CGFloat(-M_PI * 2), duration: 2.0)
+                move = SKAction.moveToY(moveY, duration: 1.0)
+                meteor.position = CGPointMake(pos, -meteor.size.height)
+            } else {
+                // Direction.down.rawValue
+                rotate = SKAction.rotateByAngle(CGFloat(M_PI * 2), duration: 2.0)
+                move = SKAction.moveToY(moveY * -1 + self.size.height, duration: 1.0)
+                meteor.position = CGPointMake(pos, self.size.height + meteor.size.height)
             }
-            let cup = SKAction.runBlock { self.countUp() }
-            var action: SKAction = SKAction.sequence([[rotate, move, cup], [SKAction.removeFromParent()]])
+            let count = SKAction.runBlock { self.countUp() }
+            var action: SKAction = SKAction.sequence([[rotate, move, count], [SKAction.removeFromParent()]])
             meteor.runAction(action)
             self.addChild(meteor)
         }
@@ -229,7 +236,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func swipedUp(sender:UISwipeGestureRecognizer){
         if let p = self.player {
             let next = p.position.y - self.playerH
-            if p.position.y > 0 {
+            if next > 0 {
                 var diff: CGFloat = self.playerH
                 var move: SKAction = SKAction.moveToY(next, duration: NSTimeInterval(diff / OctopusNode.NodeSettings.speed.rawValue))
                 p.runAction(move)

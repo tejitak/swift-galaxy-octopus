@@ -95,9 +95,9 @@ class GameViewController: UIViewController {
             }
         }
         print(score)
-        tweetSheet.setInitialText("I got a score \(score)!! Galaxy Octopus") //The default text in the tweet
+        tweetSheet.setInitialText("I got a score \(score)!! Galaxy Octopus #galaxy_octopus") //The default text in the tweet
         tweetSheet.addImage(UIImage(named: "app_icon.png")) //Add an image if you like?
-        tweetSheet.addURL(NSURL(string: "http://twitter.com")) //A url which takes you into safari if tapped on
+        tweetSheet.addURL(NSURL(string: "https://itunes.apple.com/us/app/galaxy-octopus/id986836246?l=ja&ls=1&mt=8")) //A url which takes you into safari if tapped on
         
         self.presentViewController(tweetSheet, animated: false, completion: {
             //Optional completion statement
@@ -127,7 +127,7 @@ class GameViewController: UIViewController {
         
         fbSheet.setInitialText("I got a score \(score)!! Galaxy Octopus") //The default text in the tweet
         fbSheet.addImage(UIImage(named: "app_icon.png")) //Add an image if you like?
-        fbSheet.addURL(NSURL(string: "http://twitter.com")) //A url which takes you into safari if tapped on
+        fbSheet.addURL(NSURL(string: "https://itunes.apple.com/us/app/galaxy-octopus/id986836246?l=ja&ls=1&mt=8")) //A url which takes you into safari if tapped on
         
         self.presentViewController(fbSheet, animated: false, completion: {
             //Optional completion statement

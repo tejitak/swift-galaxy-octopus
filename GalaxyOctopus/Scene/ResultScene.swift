@@ -10,6 +10,8 @@ import SpriteKit
 
 class ResultScene: SKScene {
     
+    var score: Int = -1
+    
     override func didMoveToView(view: SKView) {
         
         // retrieve score and high score
@@ -34,17 +36,33 @@ class ResultScene: SKScene {
         let hiLabel = SKLabelNode(fontNamed:"Copperplate")
         hiLabel.text = "HIGH SCORE: \(hi_score)"
         hiLabel.fontSize = 24
-        hiLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame)-100)
+        hiLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame) - 100)
         self.addChild(hiLabel)
+        
+        var tweetBtn : SKSpriteNode = TweetBtn()
+        tweetBtn.position = CGPoint(x:CGRectGetMidX(self.frame) - 60, y:CGRectGetMidY(self.frame) + 120)
+        self.addChild(tweetBtn)
+
+        var fbBtn : SKSpriteNode = FBBtn()
+        fbBtn.position = CGPoint(x:CGRectGetMidX(self.frame) + 60, y:CGRectGetMidY(self.frame) + 120)
+        self.addChild(fbBtn)
+        
+        self.score = score
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         if let touch = touches.first as? UITouch {
             let location = touch.locationInNode(self)
             let touchedNode = self.nodeAtPoint(location)
-            let newScene = TitleScene(size: self.scene!.size)
-            newScene.scaleMode = SKSceneScaleMode.AspectFill
-            self.view!.presentScene(newScene)
+            if touchedNode is TweetBtn {
+                NSNotificationCenter.defaultCenter().postNotificationName("tweetNotification", object: nil, userInfo: ["score": self.score])
+            }else if touchedNode is FBBtn {
+                NSNotificationCenter.defaultCenter().postNotificationName("fbNotification", object: nil, userInfo: ["score": self.score])
+            }else{
+                let newScene = TitleScene(size: self.scene!.size)
+                newScene.scaleMode = SKSceneScaleMode.AspectFill
+                self.view!.presentScene(newScene)
+            }
         }
     }
     

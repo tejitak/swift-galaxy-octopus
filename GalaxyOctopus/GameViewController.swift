@@ -8,6 +8,7 @@
 
 import UIKit
 import SpriteKit
+import Social
 
 extension SKNode {
     class func unarchiveFromFile(file: String) -> SKNode? {
@@ -46,6 +47,10 @@ class GameViewController: UIViewController {
             scene.size = skView.frame.size
             skView.presentScene(scene)
         }
+        let nc = NSNotificationCenter.defaultCenter()
+        nc.addObserver(self, selector: "showTweetSheet:", name: "tweetNotification", object: nil)
+        nc.addObserver(self, selector: "showFBSheet:", name: "fbNotification", object: nil)
+
     }
     
     override func shouldAutorotate() -> Bool {
@@ -67,5 +72,65 @@ class GameViewController: UIViewController {
     
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+    
+    func showTweetSheet(notification: NSNotification) {
+        let userInfo:Dictionary<String, Int> = notification.userInfo as! Dictionary<String, Int>
+        var score: Int = -1
+        if let data = userInfo["score"] {
+            score = data
+        }
+        let tweetSheet = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+        tweetSheet.completionHandler = {
+            result in
+            switch result {
+            case SLComposeViewControllerResult.Cancelled:
+                //Add code to deal with it being cancelled
+                break
+                
+            case SLComposeViewControllerResult.Done:
+                //Add code here to deal with it being completed
+                //Remember that dimissing the view is done for you, and sending the tweet to social media is automatic too. You could use this to give in game rewards?
+                break
+            }
+        }
+        print(score)
+        tweetSheet.setInitialText("I got a score \(score)!! Galaxy Octopus") //The default text in the tweet
+        tweetSheet.addImage(UIImage(named: "app_icon.png")) //Add an image if you like?
+        tweetSheet.addURL(NSURL(string: "http://twitter.com")) //A url which takes you into safari if tapped on
+        
+        self.presentViewController(tweetSheet, animated: false, completion: {
+            //Optional completion statement
+        })
+    }
+    
+    func showFBSheet(notification: NSNotification) {
+        let userInfo:Dictionary<String, Int> = notification.userInfo as! Dictionary<String, Int>
+        var score: Int = -1
+        if let data = userInfo["score"] {
+            score = data
+        }
+        let fbSheet = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+        fbSheet.completionHandler = {
+            result in
+            switch result {
+            case SLComposeViewControllerResult.Cancelled:
+                //Add code to deal with it being cancelled
+                break
+                
+            case SLComposeViewControllerResult.Done:
+                //Add code here to deal with it being completed
+                //Remember that dimissing the view is done for you, and sending the tweet to social media is automatic too. You could use this to give in game rewards?
+                break
+            }
+        }
+        
+        fbSheet.setInitialText("I got a score \(score)!! Galaxy Octopus") //The default text in the tweet
+        fbSheet.addImage(UIImage(named: "app_icon.png")) //Add an image if you like?
+        fbSheet.addURL(NSURL(string: "http://twitter.com")) //A url which takes you into safari if tapped on
+        
+        self.presentViewController(fbSheet, animated: false, completion: {
+            //Optional completion statement
+        })
     }
 }

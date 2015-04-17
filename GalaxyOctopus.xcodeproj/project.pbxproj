@@ -27,6 +27,11 @@
 		006165F51ADA0DA1009A10E3 /* ResultScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006165F41ADA0DA1009A10E3 /* ResultScene.swift */; };
 		00D976801AE13E800086FEB1 /* fish.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D9767F1AE13E800086FEB1 /* fish.png */; };
 		00D976821AE13F650086FEB1 /* PointNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D976811AE13F650086FEB1 /* PointNode.swift */; };
+		00D976841AE155430086FEB1 /* app_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D976831AE155430086FEB1 /* app_icon.png */; };
+		00D976871AE158F20086FEB1 /* fb_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D976851AE158F20086FEB1 /* fb_btn.png */; };
+		00D976881AE158F20086FEB1 /* tweet_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D976861AE158F20086FEB1 /* tweet_btn.png */; };
+		00D9768D1AE15A1D0086FEB1 /* TweetBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D9768C1AE15A1D0086FEB1 /* TweetBtn.swift */; };
+		00D9768F1AE15A280086FEB1 /* FBBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D9768E1AE15A280086FEB1 /* FBBtn.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +69,11 @@
 		006165F41ADA0DA1009A10E3 /* ResultScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultScene.swift; sourceTree = "<group>"; };
 		00D9767F1AE13E800086FEB1 /* fish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fish.png; sourceTree = "<group>"; };
 		00D976811AE13F650086FEB1 /* PointNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointNode.swift; sourceTree = "<group>"; };
+		00D976831AE155430086FEB1 /* app_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_icon.png; sourceTree = "<group>"; };
+		00D976851AE158F20086FEB1 /* fb_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fb_btn.png; sourceTree = "<group>"; };
+		00D976861AE158F20086FEB1 /* tweet_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tweet_btn.png; sourceTree = "<group>"; };
+		00D9768C1AE15A1D0086FEB1 /* TweetBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetBtn.swift; sourceTree = "<group>"; };
+		00D9768E1AE15A280086FEB1 /* FBBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBBtn.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +115,7 @@
 		005B52381AD6C7E600E2F1C7 /* GalaxyOctopus */ = {
 			isa = PBXGroup;
 			children = (
+				00D9768B1AE15A0D0086FEB1 /* Social */,
 				006165E81ADA0781009A10E3 /* Node */,
 				006165E91ADA0781009A10E3 /* Scene */,
 				005B523B1AD6C7E600E2F1C7 /* AppDelegate.swift */,
@@ -167,6 +178,9 @@
 		006165F61ADA14E8009A10E3 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				00D976851AE158F20086FEB1 /* fb_btn.png */,
+				00D976861AE158F20086FEB1 /* tweet_btn.png */,
+				00D976831AE155430086FEB1 /* app_icon.png */,
 				00D9767F1AE13E800086FEB1 /* fish.png */,
 				004064B31ADD5C7600EF13BF /* title.png */,
 				004064B51ADD67DF00EF13BF /* meteor_fast.png */,
@@ -176,6 +190,15 @@
 				004064AB1ADD533800EF13BF /* octopus.png */,
 			);
 			path = image;
+			sourceTree = "<group>";
+		};
+		00D9768B1AE15A0D0086FEB1 /* Social */ = {
+			isa = PBXGroup;
+			children = (
+				00D9768C1AE15A1D0086FEB1 /* TweetBtn.swift */,
+				00D9768E1AE15A280086FEB1 /* FBBtn.swift */,
+			);
+			name = Social;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,12 +282,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00D976871AE158F20086FEB1 /* fb_btn.png in Resources */,
+				00D976841AE155430086FEB1 /* app_icon.png in Resources */,
 				004064B11ADD533800EF13BF /* octopus.png in Resources */,
 				005B52481AD6C7E700E2F1C7 /* LaunchScreen.xib in Resources */,
 				004064BA1ADD67DF00EF13BF /* meteor_slow.png in Resources */,
 				004064B41ADD5C7600EF13BF /* title.png in Resources */,
 				004064B81ADD67DF00EF13BF /* meteor_fast.png in Resources */,
 				004064AD1ADD533800EF13BF /* background.png in Resources */,
+				00D976881AE158F20086FEB1 /* tweet_btn.png in Resources */,
 				005B52451AD6C7E700E2F1C7 /* Images.xcassets in Resources */,
 				006165ED1ADA0C62009A10E3 /* TitleScene.sks in Resources */,
 				005B52431AD6C7E700E2F1C7 /* Main.storyboard in Resources */,
@@ -287,6 +313,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00D9768F1AE15A280086FEB1 /* FBBtn.swift in Sources */,
+				00D9768D1AE15A1D0086FEB1 /* TweetBtn.swift in Sources */,
 				006165F51ADA0DA1009A10E3 /* ResultScene.swift in Sources */,
 				005B52401AD6C7E700E2F1C7 /* GameViewController.swift in Sources */,
 				00D976821AE13F650086FEB1 /* PointNode.swift in Sources */,

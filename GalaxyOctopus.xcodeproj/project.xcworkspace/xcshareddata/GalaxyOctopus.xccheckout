@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>E15BB5C7-1983-44BF-A38D-7F820A240F98</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>GalaxyOctopus</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>3611BA7DD1143491E571659EF0E8066D9126F2BF</key>
 		<string>https://github.com/tejitak/swift-galaxy-octopus.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>GalaxyOctopus.xcodeproj/project.xcworkspace</string>
+	<string>GalaxyOctopus.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>3611BA7DD1143491E571659EF0E8066D9126F2BF</key>

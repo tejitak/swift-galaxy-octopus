@@ -25,6 +25,8 @@
 		006165F11ADA0CF7009A10E3 /* OctopusNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006165F01ADA0CF7009A10E3 /* OctopusNode.swift */; };
 		006165F31ADA0D25009A10E3 /* MeteorNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006165F21ADA0D25009A10E3 /* MeteorNode.swift */; };
 		006165F51ADA0DA1009A10E3 /* ResultScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006165F41ADA0DA1009A10E3 /* ResultScene.swift */; };
+		00D976801AE13E800086FEB1 /* fish.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D9767F1AE13E800086FEB1 /* fish.png */; };
+		00D976821AE13F650086FEB1 /* PointNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D976811AE13F650086FEB1 /* PointNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,8 @@
 		006165F01ADA0CF7009A10E3 /* OctopusNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OctopusNode.swift; sourceTree = "<group>"; };
 		006165F21ADA0D25009A10E3 /* MeteorNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorNode.swift; sourceTree = "<group>"; };
 		006165F41ADA0DA1009A10E3 /* ResultScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultScene.swift; sourceTree = "<group>"; };
+		00D9767F1AE13E800086FEB1 /* fish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fish.png; sourceTree = "<group>"; };
+		00D976811AE13F650086FEB1 /* PointNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +149,7 @@
 			children = (
 				006165F01ADA0CF7009A10E3 /* OctopusNode.swift */,
 				006165F21ADA0D25009A10E3 /* MeteorNode.swift */,
+				00D976811AE13F650086FEB1 /* PointNode.swift */,
 			);
 			path = Node;
 			sourceTree = "<group>";
@@ -162,6 +167,7 @@
 		006165F61ADA14E8009A10E3 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				00D9767F1AE13E800086FEB1 /* fish.png */,
 				004064B31ADD5C7600EF13BF /* title.png */,
 				004064B51ADD67DF00EF13BF /* meteor_fast.png */,
 				004064B61ADD67DF00EF13BF /* meteor_normal.png */,
@@ -262,6 +268,7 @@
 				005B52451AD6C7E700E2F1C7 /* Images.xcassets in Resources */,
 				006165ED1ADA0C62009A10E3 /* TitleScene.sks in Resources */,
 				005B52431AD6C7E700E2F1C7 /* Main.storyboard in Resources */,
+				00D976801AE13E800086FEB1 /* fish.png in Resources */,
 				004064B91ADD67DF00EF13BF /* meteor_normal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,6 +289,7 @@
 			files = (
 				006165F51ADA0DA1009A10E3 /* ResultScene.swift in Sources */,
 				005B52401AD6C7E700E2F1C7 /* GameViewController.swift in Sources */,
+				00D976821AE13F650086FEB1 /* PointNode.swift in Sources */,
 				006165F11ADA0CF7009A10E3 /* OctopusNode.swift in Sources */,
 				005B523C1AD6C7E600E2F1C7 /* AppDelegate.swift in Sources */,
 				006165EF1ADA0CCE009A10E3 /* GameScene.swift in Sources */,

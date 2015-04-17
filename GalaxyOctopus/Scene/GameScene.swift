@@ -103,7 +103,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func didBeginContact(contact: SKPhysicsContact) {
         // detect collision
-        gameOver()
+        if contact.bodyB.node is MeteorNode {
+            gameOver()
+        } else if contact.bodyB.node is PointNode {
+            // get point
+            contact.bodyB.node?.removeFromParent()
+            countUp()
+        }
     }
     
     override func update(currentTime: NSTimeInterval) {
@@ -123,6 +129,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func gameOver() {
+        
         // set scrore
         let ud = NSUserDefaults.standardUserDefaults()
         ud.setInteger(score, forKey: "score")
@@ -159,19 +166,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     func generateMeteor() {
-        var dir: Int = Int(arc4random_uniform(UInt32(4)))
+        var dir: Int = Int(arc4random_uniform(UInt32(8)))
         var len: CGFloat = 0
-        if dir == 0 || dir == 1 {
+        if dir % 4 == 0 || dir % 4 == 1 {
             len = self.size.height
         } else {
             len = self.size.width
         }
         var randLine: CGFloat = CGFloat(arc4random_uniform(UInt32(meteorLine)))
-        let meteor: MeteorNode = MeteorNode()
-        addMeteor(meteor, pos: len / CGFloat(meteorLine) * randLine , direction: dir)
+        let other: SKSpriteNode = dir > 4 ? PointNode() : MeteorNode()
+        addMeteor(other, pos: len / CGFloat(meteorLine) * randLine , direction: dir % 4)
     }
     
-    func addMeteor(meteor: MeteorNode, pos: CGFloat, direction: Int) {
+    func addMeteor(meteor: SKSpriteNode, pos: CGFloat, direction: Int) {
         if gameStatus != GameStatus.kGameOver.rawValue {
             var pr: CGFloat = meteor.size.width / 2
             meteor.physicsBody = SKPhysicsBody(
@@ -204,8 +211,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 move = SKAction.moveToY(moveY * -1 + self.size.height, duration: 2.0)
                 meteor.position = CGPointMake(pos, self.size.height + meteor.size.height)
             }
-            let count = SKAction.runBlock { self.countUp() }
-            var action: SKAction = SKAction.sequence([[rotate, move, count], [SKAction.removeFromParent()]])
+            var action: SKAction = SKAction.sequence([[rotate, move], [SKAction.removeFromParent()]])
             meteor.runAction(action)
             self.addChild(meteor)
         }

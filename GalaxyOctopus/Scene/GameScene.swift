@@ -134,6 +134,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let ud = NSUserDefaults.standardUserDefaults()
         ud.setInteger(score, forKey: "score")
         
+        // remove attached gestures
+        if let v = self.view {
+            if let recognizers = v.gestureRecognizers {
+                for recognizer in recognizers {
+                    v.removeGestureRecognizer(recognizer as! UIGestureRecognizer)
+                }
+            }
+        }
+        
         // move to result scene
         let newScene = ResultScene(size: self.scene!.size)
         newScene.scaleMode = SKSceneScaleMode.AspectFill
